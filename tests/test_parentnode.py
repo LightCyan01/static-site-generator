@@ -1,4 +1,5 @@
 import unittest
+import test_config
 
 from leafnode import LeafNode
 from parentnode import ParentNode

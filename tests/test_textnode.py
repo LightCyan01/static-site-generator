@@ -1,4 +1,5 @@
 import unittest
+import test_config
 
 from textnode import TextNode, TextType
 
