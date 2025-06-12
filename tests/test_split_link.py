@@ -2,7 +2,7 @@ import unittest
 import test_config
 
 from textnode import TextNode, TextType
-from utils import split_nodes_link  
+from split_nodes import split_nodes_link
 
 class TestSplitLinks(unittest.TestCase):
     def test_split_links(self):

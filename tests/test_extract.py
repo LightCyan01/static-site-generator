@@ -1,7 +1,7 @@
 import unittest
 import test_config
 
-from utils import extract_markdown_links, extract_markdown_images
+from extractors import extract_markdown_images, extract_markdown_links
 
 
 class TestExtract(unittest.TestCase):

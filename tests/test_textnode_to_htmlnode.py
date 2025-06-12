@@ -2,7 +2,7 @@ import unittest
 import test_config
 
 from textnode import TextNode, TextType
-from textnode_to_htmlnode import text_node_to_html_node
+from utils import text_node_to_html_node
 
 class TestTextNode_to_HTMLNode(unittest.TestCase):
     

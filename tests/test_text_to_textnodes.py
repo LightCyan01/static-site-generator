@@ -2,7 +2,7 @@ import unittest
 import test_config
 
 from textnode import TextNode, TextType
-from text_to_textnodes import text_to_textnodes
+from utils import text_to_textnodes
 
 class TestTextToTextnodes(unittest.TestCase):
     def test_full_markdown_line(self):

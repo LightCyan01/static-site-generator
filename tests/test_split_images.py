@@ -2,7 +2,7 @@ import unittest
 import test_config
 
 from textnode import TextType, TextNode
-from utils import split_nodes_image
+from split_nodes import split_nodes_image
 
 
 class TestTextNode(unittest.TestCase):

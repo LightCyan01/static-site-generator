@@ -2,7 +2,7 @@ import unittest
 import test_config
 
 
-from utils import markdown_to_blocks
+from parser import markdown_to_blocks
 
 
 class TestMarkdowntoBlocks(unittest.TestCase):
