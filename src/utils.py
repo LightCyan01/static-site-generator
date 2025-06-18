@@ -63,4 +63,26 @@ def generate_page(from_path, template_path, dest_path):
     os.makedirs(os.path.dirname(dest_path), exist_ok=True)
     with open(dest_path, "w") as f:
         f.write(page)
+        
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+    #crawl every entry
+    for root, dirs, files in os.walk(dir_path_content):
+        for filename in files:
+            if not filename.endswith(".md"):
+                continue
+            
+            #path to src markdown
+            src_md = os.path.join(root, filename)
+            
+            #relative path
+            rel_dir = os.path.relpath(root, dir_path_content)
+            
+            #output dir
+            out_dir = os.path.join(dest_dir_path, rel_dir)
+            os.makedirs(out_dir, exist_ok=True)
+            
+            base, _ = os.path.splitext(filename)
+            dst_html = os.path.join(out_dir, base + ".html")
+            
+            generate_page(src_md, template_path, dst_html)
     
