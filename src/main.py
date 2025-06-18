@@ -1,9 +1,9 @@
-from textnode import TextNode, TextType
-from htmlnode import HTMLNode
+from file_utils import copy_static_to_public
 
 def main():
-    print(TextNode("This is some anchor text", TextType.LINK, "https://www.boot.dev"))
-    print(HTMLNode(tag="div", value="Hello", children=[], props={"id": "main"}))
+    
+    pass
 
 if __name__ == "__main__":
+    copy_static_to_public()
     main()
