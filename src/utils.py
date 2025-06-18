@@ -34,7 +34,7 @@ def text_node_to_html_node(text_node: TextNode):
         case _: 
             raise ValueError(f"Error: {text_node.text_type}")
 
-def generate_page(from_path, template_path, dest_path):
+def generate_page(from_path, template_path, dest_path, basepath="/"):
     from parser import markdown_to_html_node
     from extractors import extract_title
 
@@ -57,14 +57,14 @@ def generate_page(from_path, template_path, dest_path):
     title = extract_title(md)
     
     #6. add title & content to template
-    page = (template.replace("{{ Title }}", title).replace("{{ Content }}", content_html))
+    page = (template.replace("{{ Title }}", title).replace("{{ Content }}", content_html).replace('href="/', f'href="{basepath}').replace('src="/',  f'src="{basepath}'))
     
     #7. write results
     os.makedirs(os.path.dirname(dest_path), exist_ok=True)
     with open(dest_path, "w") as f:
         f.write(page)
         
-def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, basepath="/"):
     #crawl every entry
     for root, dirs, files in os.walk(dir_path_content):
         for filename in files:
@@ -84,5 +84,5 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
             base, _ = os.path.splitext(filename)
             dst_html = os.path.join(out_dir, base + ".html")
             
-            generate_page(src_md, template_path, dst_html)
+            generate_page(src_md, template_path, dst_html, basepath)
     
